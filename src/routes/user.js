@@ -59,7 +59,7 @@ router.post('/users', async (req, res) => {
     const response = await user.save();
     sendWelcomeEmail(user.email, user.name)
     const token = await user.generateToken();
-    res.status(201).send({ response, token })
+    res.status(201).send({ user, token })
   } catch (e) {
     res.status(500).send(e.message)
   }
